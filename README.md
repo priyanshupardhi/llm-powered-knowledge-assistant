@@ -96,6 +96,73 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## Sample Testing Files
+
+To test the system, you can use these sample files. **Note: The system currently supports uploading one file at a time.**
+
+### Sample Text File (`sample_document.txt`)
+Create a file named `sample_document.txt` with the following content:
+
+```
+Artificial Intelligence and Machine Learning
+
+Artificial Intelligence (AI) is a branch of computer science that aims to create intelligent machines that work and react like humans. Some of the activities computers with artificial intelligence are designed for include speech recognition, learning, planning, and problem solving.
+
+Machine Learning is a subset of AI that provides systems the ability to automatically learn and improve from experience without being explicitly programmed. Machine learning focuses on the development of computer programs that can access data and use it to learn for themselves.
+
+Key Concepts:
+1. Neural Networks: Computing systems inspired by biological neural networks
+2. Deep Learning: A subset of machine learning using neural networks with multiple layers
+3. Natural Language Processing: Enabling computers to understand and interpret human language
+4. Computer Vision: Teaching computers to interpret and understand visual information
+
+Applications of AI and ML include:
+- Virtual assistants (Siri, Alexa)
+- Recommendation systems (Netflix, Amazon)
+- Autonomous vehicles
+- Medical diagnosis
+- Fraud detection
+- Language translation
+```
+
+### Sample Markdown File (`research_paper.md`)
+Create a file named `research_paper.md` with the following content:
+
+```markdown
+# The Future of Artificial Intelligence
+
+## Introduction
+Artificial Intelligence has evolved significantly over the past decade, transforming various industries and reshaping how we interact with technology.
+
+## Current State of AI
+Modern AI systems can perform tasks that were once thought to be exclusively human, including:
+- Natural language understanding
+- Image and video recognition
+- Complex decision making
+- Creative content generation
+
+## Machine Learning Applications
+Machine learning algorithms are being used in:
+1. **Healthcare**: Disease diagnosis and drug discovery
+2. **Finance**: Risk assessment and fraud detection
+3. **Education**: Personalized learning and automated grading
+4. **Transportation**: Self-driving cars and traffic optimization
+
+## Challenges and Considerations
+Despite rapid advancement, AI faces several challenges:
+- Ethical concerns about bias and fairness
+- Privacy and data security issues
+- Job displacement and economic impact
+- Need for robust safety measures
+
+## Future Prospects
+The future of AI holds promise for:
+- Enhanced human-AI collaboration
+- Solving complex global challenges
+- Improving quality of life
+- Advancing scientific research
+```
+
 ## Usage
 
 ### 1. Upload Documents
@@ -104,8 +171,13 @@ python manage.py runserver
 2. Login with your superuser credentials
 3. Navigate to "Documents" section
 4. Click "Add Document"
-5. Upload your PDF, TXT, or MD file
+5. **Upload one file at a time** (PDF, TXT, or MD file)
 6. The document will be automatically processed and indexed
+
+**Important Notes:**
+- **Single File Upload**: Currently, the system processes one file at a time
+- **File Replacement**: Uploading a new document will create a new index; previous documents remain in the database
+- **Supported Formats**: PDF, TXT, MD files only
 
 ### 2. Ask Questions
 
@@ -127,6 +199,22 @@ curl http://127.0.0.1:8000/api/v1/knowledge-base/documents/
 
 - `POST /api/v1/llm-assistant/ask-question/` - Ask questions about documents
 - `GET /api/v1/knowledge-base/documents/` - List all uploaded documents
+
+### 3. Testing with Sample Questions
+
+After uploading a sample document, try these questions:
+
+**For AI/ML content:**
+- "What is artificial intelligence?"
+- "What are the applications of machine learning?"
+- "What challenges does AI face?"
+- "How does machine learning work?"
+
+**For research paper content:**
+- "What is the future of AI?"
+- "What are the current applications of AI?"
+- "What challenges does AI face?"
+- "What are the prospects for AI development?"
 
 ## Project Structure
 
@@ -179,6 +267,11 @@ knowledge_assistance_llm/
 3. **"Module not found" errors**
    - Make sure all dependencies are installed: `pip install -r requirements.txt`
    - Check that your virtual environment is activated
+
+4. **"Single file upload limitation"**
+   - The system currently supports one file at a time
+   - Each upload creates a new index
+   - Previous documents remain in the database
 
 ### Debug Mode
 
